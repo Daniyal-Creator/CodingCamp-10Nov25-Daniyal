@@ -151,7 +151,39 @@
                         </div>
                     </section>
 
+                    <section aria-labelledby="todolist-heading">
+                        <h3 id="todolist-heading" class="sr-only">Daftar Kegiatan</h3>
+                        <div id="todoList" class="todo-list" role="list"></div>
+                    </section>
+                </div>
+            </div>
 
+            <div id="panel-history" class="tab-content" role="tabpanel" aria-labelledby="tab-history" tabindex="0" hidden>
+                <div class="content">
+                    <section class="stats-section" aria-labelledby="stats-heading">
+                        <h3 id="stats-heading" class="sr-only">Statistik Kegiatan</h3>
+                        <div class="stat-card">
+                            <div class="stats-content">
+                                <div class="stat-number" id="totalCompleted" aria-label="Total kegiatan selesai">0</div>
+                                <div class="stat-label">Total Selesai</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stats-content">
+                                <div class="stat-number" id="thisWeek" aria-label="Kegiatan selesai minggu ini">0</div>
+                                <div class="stat-label">Minggu Ini</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section aria-labelledby="history-heading">
+                        <h3 id="history-heading" class="section-title">Riwayat Kegiatan</h3>
+                        <div id="historyList" class="todo-list" role="list"></div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
 
                     <script src="js/script.js"></script>
                 </body>
