@@ -398,3 +398,104 @@ function clearFieldError(fieldId) {
   }
 }
 
+function editTodo(id) {
+  const todo = todos.find(t => t.id === id);
+  if (todo) {
+    document.getElementById('activity').value = todo.activity;
+    document.getElementById('description').value = todo.description || '';
+    document.getElementById('schedule').value = todo.schedule;
+    document.getElementById('priority').value = todo.priority;
+    document.getElementById('submitBtn').querySelector('.btn-text').textContent = 'Update Kegiatan';
+    editingId = id;
+    
+    updateCharCount();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    setTimeout(() => {
+      document.getElementById('activity').focus();
+    }, 300);
+  }
+}
+
+function deleteTodo(id) {
+  const todo = todos.find(t => t.id === id);
+  if (todo && confirm('Apakah Anda yakin ingin menghapus kegiatan "' + todo.activity + '"?')) {
+    todos = todos.filter(t => t.id !== id);
+    
+    saveData();
+    showAlert('🗑️ Kegiatan berhasil dihapus!');
+    updateCounts();
+    renderTodos();
+  }
+}
+
+function filterTodos(filter) {
+  currentFilter = filter;
+  
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    const isActive = btn.dataset.filter === filter;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', isActive);
+  });
+  
+  renderTodos();
+}
+
+function sortTodos(sort) {
+  currentSort = sort;
+  
+  document.querySelectorAll('.sort-btn').forEach(btn => {
+    const isActive = btn.dataset.sort === sort;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', isActive);
+  });
+  
+  renderTodos();
+}
+
+function updateCharCount() {
+  const description = document.getElementById('description');
+  const charCount = document.querySelector('.char-count');
+  if (description && charCount) {
+    charCount.textContent = description.value.length + ' / 500';
+  }
+}
+
+document.getElementById('description').addEventListener('input', debounce(updateCharCount, 100));
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    switchTab(btn.dataset.tab);
+  });
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterTodos(btn.dataset.filter);
+  });
+});
+
+document.querySelectorAll('.sort-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    sortTodos(btn.dataset.sort);
+  });
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (editingId !== null) {
+      editingId = null;
+      document.getElementById('todoForm').reset();
+      document.getElementById('submitBtn').querySelector('.btn-text').textContent = 'Tambah Kegiatan';
+      updateCharCount();
+    }
+  }
+  
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('activity').focus();
+  }
+});
+
+loadData();
+renderTodos();
