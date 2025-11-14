@@ -397,3 +397,4 @@ function clearFieldError(fieldId) {
     error.textContent = '';
   }
 }
+
