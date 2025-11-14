@@ -404,3 +404,143 @@ body {
   padding: 9px 18px;
   font-size: 0.85em;
 }
+
+.btn-success:hover {
+  background: var(--success-600);
+  transform: translateY(-1px);
+}
+
+.btn-edit {
+  background: var(--warning-500);
+  color: white;
+  padding: 9px 18px;
+  font-size: 0.85em;
+}
+
+.btn-edit:hover {
+  background: var(--warning-600);
+  transform: translateY(-1px);
+}
+
+.btn-delete {
+  background: var(--error-500);
+  color: white;
+  padding: 9px 18px;
+  font-size: 0.85em;
+}
+
+.btn-delete:hover {
+  background: var(--error-600);
+  transform: translateY(-1px);
+}
+
+.btn-restore {
+  background: #3B82F6;
+  color: white;
+  padding: 9px 18px;
+  font-size: 0.85em;
+}
+
+.btn-restore:hover {
+  background: var(--primary-600);
+  transform: translateY(-1px);
+}
+
+.filter-section,
+.sort-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.filter-btn,
+.sort-btn {
+  padding: 10px 20px;
+  border: 2px solid var(--slate-300);
+  background: white;
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  color: var(--slate-600);
+  font-size: 0.9em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-btn .count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.filter-btn.active {
+  background: var(--primary-600);
+  color: white;
+  border-color: var(--primary-600);
+}
+
+.filter-btn.active .count {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.filter-btn:hover:not(.active) {
+  border-color: var(--primary-600);
+  color: var(--primary-600);
+  background: var(--primary-50);
+}
+
+.sort-btn.active {
+  background: var(--secondary-600);
+  color: white;
+  border-color: var(--secondary-600);
+}
+
+.sort-btn:hover:not(.active) {
+  border-color: var(--secondary-600);
+  color: var(--secondary-600);
+  background: #F5F3FF;
+}
+
+.filter-btn:focus-visible,
+.sort-btn:focus-visible {
+  outline: 2px solid var(--primary-600);
+  outline-offset: 2px;
+}
+
+.todo-list {
+  display: grid;
+  gap: 16px;
+}
+
+.todo-card {
+  background: white;
+  border: 2px solid var(--slate-200);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-out, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -114,6 +114,43 @@
                         </form>
                     </section>
 
+                                        <section aria-labelledby="filter-heading">
+                        <h3 id="filter-heading" class="section-title">Filter Berdasarkan Prioritas</h3>
+                        <div class="filter-section" role="group" aria-label="Filter prioritas">
+                            <button class="filter-btn active" data-filter="semua" aria-pressed="true">
+                                Semua
+                                <span class="count" id="count-semua">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="penting" aria-pressed="false">
+                                ⭐ Penting
+                                <span class="count" id="count-penting">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="lumayan" aria-pressed="false">
+                                ⚡ Lumayan
+                                <span class="count" id="count-lumayan">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="tidak" aria-pressed="false">
+                                ✅ Tidak Terlalu
+                                <span class="count" id="count-tidak">0</span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <section aria-labelledby="sort-heading">
+                        <h3 id="sort-heading" class="section-title">Urutkan Berdasarkan</h3>
+                        <div class="sort-section" role="group" aria-label="Urutkan kegiatan">
+                            <button class="sort-btn active" data-sort="priority" aria-pressed="true">
+                                Prioritas Tertinggi
+                            </button>
+                            <button class="sort-btn" data-sort="date-asc" aria-pressed="false">
+                                Waktu Terdekat
+                            </button>
+                            <button class="sort-btn" data-sort="date-desc" aria-pressed="false">
+                                Waktu Terjauh
+                            </button>
+                        </div>
+                    </section>
+
 
 
                     <script src="js/script.js"></script>
