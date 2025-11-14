@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplikasi To-Do List modern untuk mengelola kegiatan harian Anda">
+    <title>My To-Do List - Kelola Kegiatan Anda</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="header-title">My To-Do List</h1>
+                <p class="header-subtitle">Kelola kegiatan Anda dengan mudah dan terorganisir</p>
+            </div>
+        </header>
+
+        <nav class="tab-navigation" role="tablist" aria-label="Navigasi kegiatan">
+            <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-active" id="tab-active" data-tab="active">
+                Kegiatan Aktif
+                <span class="tab-badge" id="activeBadge">0</span>
+            </button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-history" id="tab-history" data-tab="history">
+                Histori Selesai
+                <span class="tab-badge" id="historyBadge">0</span>
+            </button>
+        </nav>
+
+        <main id="main-content">
+            <div id="panel-active" class="tab-content active" role="tabpanel" aria-labelledby="tab-active" tabindex="0">
+                <div class="content">
+                    <div id="alertBox" class="alert" role="alert" aria-live="polite"></div>
+
+                    <section class="input-section" aria-labelledby="form-heading">
+                        <h2 id="form-heading" class="section-heading">Tambah Kegiatan Baru</h2>
+                        <form id="todoForm" novalidate>
+                            <div class="form-field">
+                                <label for="activity" id="activity-label" class="form-label">
+                                    Judul Kegiatan <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="activity" 
+                                    class="form-input"
+                                    placeholder="Contoh: Memasak untuk keluarga" 
+                                    required
+                                    aria-required="true"
+                                    aria-invalid="false"
+                                    aria-describedby="activity-hint activity-error"
+                                    maxlength="100"
+                                >
+                                <span id="activity-hint" class="form-hint">Maksimal 100 karakter</span>
+                                <span id="activity-error" class="form-error" role="alert"></span>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="description" id="description-label" class="form-label">
+                                    Deskripsi / Detail Kegiatan
+                                </label>
+                                <textarea 
+                                    id="description" 
+                                    class="form-input form-textarea"
+                                    placeholder="Tambahkan detail kegiatan Anda di sini...&#10;Contoh: Masak opor ayam 6 porsi untuk lebaran. Beli bumbu di pasar, masak mulai jam 8 pagi."
+                                    aria-describedby="description-hint"
+                                    maxlength="500"
+                                ></textarea>
+                                <div class="form-footer">
+                                    <span id="description-hint" class="char-count">0 / 500</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="schedule" id="schedule-label" class="form-label">
+                                    Jadwal <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="datetime-local" 
+                                    id="schedule" 
+                                    class="form-input"
+                                    required
+                                    aria-required="true"
+                                    aria-invalid="false"
+                                    aria-describedby="schedule-error"
+                                >
+                                <span id="schedule-error" class="form-error" role="alert"></span>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="priority" id="priority-label" class="form-label">
+                                    Tingkat Kepentingan <span class="required">*</span>
+                                </label>
+                                <select 
+                                    id="priority" 
+                                    class="form-input"
+                                    required
+                                    aria-required="true"
+                                    aria-invalid="false"
+                                    aria-describedby="priority-error"
+                                >
+                                    <option value="">Pilih Prioritas</option>
+                                    <option value="penting">Penting</option>
+                                    <option value="lumayan">Lumayan Penting</option>
+                                    <option value="tidak">Tidak Terlalu Penting</option>
+                                </select>
+                                <span id="priority-error" class="form-error" role="alert"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="submitBtn">
+                                <span class="btn-text">Tambah Kegiatan</span>
+                            </button>
+                        </form>
+                    </section>
+
+
+
+                    <script src="js/script.js"></script>
+                </body>
+                </html>
