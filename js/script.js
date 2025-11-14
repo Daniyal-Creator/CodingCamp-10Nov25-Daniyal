@@ -115,3 +115,52 @@ function switchTab(tab) {
     renderHistory();
   }
 }
+
+function toggleDescription(id, type) {
+  const content = document.getElementById('desc-' + type + '-' + id);
+  const toggle = document.getElementById('toggle-' + type + '-' + id);
+  
+  const isExpanded = content.classList.contains('show');
+  content.classList.toggle('show');
+  toggle.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', !isExpanded);
+}
+
+function completeTodo(id) {
+  const todo = todos.find(t => t.id === id);
+  if (todo && confirm('Tandai kegiatan ini sebagai selesai?')) {
+    todo.completedDate = new Date().toISOString();
+    completedTodos.push(todo);
+    todos = todos.filter(t => t.id !== id);
+    
+    saveData();
+    showAlert('🎉 Selamat! Kegiatan berhasil diselesaikan!');
+    updateCounts();
+    renderTodos();
+  }
+}
+
+function restoreTodo(id) {
+  const todo = completedTodos.find(t => t.id === id);
+  if (todo && confirm('Kembalikan kegiatan ini ke daftar aktif?')) {
+    delete todo.completedDate;
+    todos.push(todo);
+    completedTodos = completedTodos.filter(t => t.id !== id);
+    
+    saveData();
+    showAlert('↩️ Kegiatan dikembalikan ke daftar aktif!');
+    updateCounts();
+    renderHistory();
+  }
+}
+
+function deleteFromHistory(id) {
+  if (confirm('Hapus permanen dari histori?')) {
+    completedTodos = completedTodos.filter(t => t.id !== id);
+    
+    saveData();
+    showAlert('🗑️ Kegiatan dihapus dari histori!');
+    updateCounts();
+    renderHistory();
+  }
+}
